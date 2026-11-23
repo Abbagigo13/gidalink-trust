@@ -496,24 +496,32 @@ The structure may evolve as the application grows.
 | Area | Status |
 | --- | --- |
 | Project setup | Completed |
-| Frontend visual foundation | Implemented |
-| Sample property listings | Implemented |
-| Supabase project | Created |
-| Initial database schema | Implemented |
-| Database enums | Implemented |
-| Initial RLS policies | Implemented |
-| Authentication integration | In progress |
-| Live property discovery | Pending |
-| Property detail pages | Pending |
-| Landlord dashboard | Pending |
-| Inspection workflow | Pending |
-| Verification dashboard | Pending |
-| Reporting system | Pending |
-| Admin dashboard | Pending |
-| Kane automated testing | Pending |
+| Landing page (public marketplace) | Implemented |
+| Initial schema + RLS | Implemented |
+| Trust engine migration (roles, review functions, storage, favourites) | Implemented, apply `20261122000000_trust_engine.sql` |
+| Authentication and role-based dashboard | Implemented |
+| Live property discovery from `public_properties` | Implemented |
+| Listing creation, photos, evidence, submit for review | Implemented |
+| Verifier queue and decisions | Implemented |
+| Inspection requests and responses | Implemented |
+| Suspicious listing reports and admin moderation | Implemented |
+| Admin users, roles and audit log | Implemented |
+| Kane scenarios, runner, pre-push gate, in-app quality page | Implemented, see `docs/KANE.md` |
+| Kane results from real browser runs | Run `npm run kane` and commit `kane/reports/` |
 | Production deployment | Pending |
 
-*Status describes the development plan and known progress; a feature is not considered complete until its implementation has been tested.*
+*A feature is not complete until a Kane run or a manual test has actually passed it.*
+
+### Build phases
+
+1. **Foundation:** project, design, landing page, schema.
+2. **Trust engine:** role-safe signup, status changes only through database functions, private address, storage buckets.
+3. **Accounts:** sign in, register, protected routes, role guards.
+4. **Owner dashboard:** listings, photos, evidence, submit and withdraw.
+5. **Verification:** queue, evidence viewer, approve or reject with reasons, audit trail.
+6. **Marketplace actions:** inspections, favourites, reports, suspension.
+7. **Kane closed loop:** scenarios, runner, feedback file, gate, quality page.
+8. **Ship:** seed test users, run Kane, record the demo, deploy, submit.
 
 ---
 

@@ -1,0 +1,18 @@
+#!/bin/sh
+# Blocks `git push` until the Kane smoke scenarios pass against the running app.
+# Install once with: npm run kane:hooks
+# Emergency bypass (visible in your shell history): KANE_SKIP=1 git push
+
+if [ "$KANE_SKIP" = "1" ]; then
+  echo "[kane] KANE_SKIP=1 set: skipping the Kane gate. This push is NOT verified."
+  exit 0
+fi
+
+echo "[kane] Running the smoke gate before push (app must be running on KANE_BASE_URL)..."
+npm run --silent kane:gate
+status=$?
+
+if [ $status -ne 0 ]; then
+  echo "[kane] Push blocked. Open KANE_FEEDBACK.md, fix the failures, and push again."
+  exit 1
+fi

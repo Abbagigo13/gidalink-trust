@@ -1,0 +1,72 @@
+[
+  {
+    "id": "K01",
+    "title": "Public property discovery",
+    "tags": ["smoke", "public"],
+    "requires": ["base_url"],
+    "objective": "Open {{base_url}}. Click 'Explore properties' in the top navigation and verify the heading 'Find your place.' is visible and the result count shows 'PROPERTIES'. Click the 'Buy' tab in the listing toolbar and verify at least one property card with a price in Naira (₦) is shown. Click 'View details' on the first card and verify a dialog opens showing a disclaimer that tells the visitor to independently confirm documents or not to send money."
+  },
+  {
+    "id": "K02",
+    "title": "Register a new buyer account",
+    "tags": ["auth"],
+    "requires": ["base_url", "kane_password"],
+    "objective": "Open {{base_url}}/auth?mode=register. Create an account with full name 'Kane Buyer', email {{smart.random_email}}, password {{kane_password}} and the role 'Buyer or renter'. Submit the form and verify the dashboard greeting 'Hello, Kane.' is visible and the role badge shows 'buyer'."
+  },
+  {
+    "id": "K03",
+    "title": "Login, protected routes and logout",
+    "tags": ["smoke", "auth"],
+    "requires": ["base_url", "buyer_email", "buyer_password"],
+    "objective": "Open {{base_url}}/app without signing in and verify the page redirects to the sign-in form titled 'Welcome back'. Sign in with email {{buyer_email}} and password {{buyer_password}} and verify the dashboard Overview is visible. Reload the page and verify the dashboard is still visible. Click 'Sign out' and verify the home page with the GidaLink navigation is visible."
+  },
+  {
+    "id": "K04",
+    "title": "Landlord creates a draft and cannot submit without evidence",
+    "tags": ["listings", "trust"],
+    "requires": ["base_url", "landlord_email", "landlord_password"],
+    "objective": "Open {{base_url}}/auth and sign in with email {{landlord_email}} and password {{landlord_password}}. Open 'My listings' and click 'New listing'. Fill the form with title 'Kane test flat in Gwarinpa', listing type Rent, price 4500000, 3 bedrooms, 3 bathrooms, address '12 Test Close, Gwarinpa', city 'Abuja', state 'FCT' and a description of at least 30 characters, then click 'Create draft'. Verify the page heading 'Edit listing.' and a 'Draft' badge are visible. Click 'Submit for review' without uploading anything and verify an error says a photograph or ownership document is required before submitting."
+  },
+  {
+    "id": "K05",
+    "title": "Listing form rejects invalid input",
+    "tags": ["listings"],
+    "requires": ["base_url", "landlord_email", "landlord_password"],
+    "objective": "Open {{base_url}}/auth and sign in with email {{landlord_email}} and password {{landlord_password}}. Open {{base_url}}/app/listings/new, leave every field empty and click 'Create draft'. Verify validation messages appear for the title, price, address, city and description fields, and that no 'Edit listing.' heading appears."
+  },
+  {
+    "id": "K06",
+    "title": "Verifier queue and decision rules",
+    "tags": ["trust", "verifier"],
+    "requires": ["base_url", "verifier_email", "verifier_password"],
+    "objective": "Open {{base_url}}/auth and sign in with email {{verifier_email}} and password {{verifier_password}}. Open 'Verification queue'. If the text 'The queue is clear' is shown, verify that message. Otherwise click the first listing, verify the buttons 'Approve and verify' and 'Reject' are visible, leave the notes empty, click 'Reject' and verify a message asks for the reason for rejection."
+  },
+  {
+    "id": "K07",
+    "title": "Buyer permissions are enforced",
+    "tags": ["smoke", "permissions"],
+    "requires": ["base_url", "buyer_email", "buyer_password"],
+    "objective": "Open {{base_url}}/auth and sign in with email {{buyer_email}} and password {{buyer_password}}. Verify the sidebar does not contain 'My listings', 'Verification queue' or 'Admin'. Open {{base_url}}/app/review and verify the page says 'You do not have access to this page'. Open {{base_url}}/app/admin and verify the same message. Open {{base_url}}/app/listings/new and verify the page does not show the 'List your property.' form."
+  },
+  {
+    "id": "K08",
+    "title": "Landlord permissions are enforced",
+    "tags": ["permissions"],
+    "requires": ["base_url", "landlord_email", "landlord_password"],
+    "objective": "Open {{base_url}}/auth and sign in with email {{landlord_email}} and password {{landlord_password}}. Verify the sidebar contains 'My listings' but does not contain 'Verification queue' or 'Admin'. Open {{base_url}}/app/review and verify the page says 'You do not have access to this page'."
+  },
+  {
+    "id": "K09",
+    "title": "Sample listings cannot receive inspections or reports",
+    "tags": ["public", "trust"],
+    "requires": ["base_url"],
+    "objective": "Open {{base_url}}, click 'Explore properties', click 'View details' on the first property card and verify the dialog is visible. Verify the dialog tells the visitor that inspection requests are only available for live verified listings, or that this is a sample listing, and that no date picker for an inspection is shown."
+  },
+  {
+    "id": "K10",
+    "title": "Admin console shows users and audit log",
+    "tags": ["admin"],
+    "requires": ["base_url", "admin_email", "admin_password"],
+    "objective": "Open {{base_url}}/auth and sign in with email {{admin_email}} and password {{admin_password}}. Open 'Admin' in the sidebar and verify a Users table and an Audit log section are visible. Verify the role selector in the row marked '(you)' is disabled. Open 'Reports' and verify the heading 'Suspicious reports.' is visible."
+  }
+]

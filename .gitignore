@@ -27,3 +27,11 @@ dist-ssr
 !.env.example
 node_modules/
 dist/
+
+# Kane
+.env.kane
+KANE_FEEDBACK.md
+public/kane-report.json
+public/kane-history.json
+.testmuai/evidence/
+.testmuai/variables/

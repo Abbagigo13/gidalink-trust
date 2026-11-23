@@ -18,7 +18,12 @@ import {
   SlidersHorizontal,
   X,
 } from "lucide-react";
-import { supabase } from "./lib/supabase";
+import { Link } from "react-router-dom";
+import { useAuth } from "./context/auth-context";
+import ListingActions from "./components/ListingActions";
+import { getPublicProperties } from "./services/properties";
+import { addFavorite, getFavoriteIds, removeFavorite } from "./services/workflow";
+import type { PublicPropertyRow } from "./types";
 import "./App.css";
 
 type ListingType = "Rent" | "Buy" | "Land";
@@ -43,6 +48,7 @@ type Property = {
   description: string;
   features: string[];
   source: "database" | "demo";
+  createdAt?: string;
 };
 
 const demoProperties: Property[] = [
@@ -237,7 +243,7 @@ const demoProperties: Property[] = [
 const money = (amount: number) =>
   "₦" + new Intl.NumberFormat("en-NG").format(amount);
 
-function mapDatabaseProperty(row: any): Property {
+function mapDatabaseProperty(row: PublicPropertyRow): Property {
   const listingType: ListingType =
     row.listing_type === "sale"
       ? "Buy"
@@ -245,7 +251,7 @@ function mapDatabaseProperty(row: any): Property {
         ? "Land"
         : "Rent";
 
-  const images = Array.isArray(row.image_urls)
+  const images: string[] = Array.isArray(row.image_urls)
     ? row.image_urls
     : [];
 
@@ -268,7 +274,7 @@ function mapDatabaseProperty(row: any): Property {
     baths: row.bathrooms ?? undefined,
     area: neighbourhood,
     type: listingType,
-    status: "Verified",
+    status: row.status === "verified" ? "Verified" : "Pending review",
     image:
       images[0] ||
       "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=85",
@@ -276,6 +282,7 @@ function mapDatabaseProperty(row: any): Property {
       row.description || "No property description provided yet.",
     features,
     source: "database",
+    createdAt: row.published_at ?? row.created_at,
   };
 }
 
@@ -296,8 +303,37 @@ function App() {
   const [verification, setVerification] = useState("All statuses");
   const [sort, setSort] = useState<SortOption>("recommended");
 
+  const { user } = useAuth();
+  const userId = user?.id ?? null;
+
   const [databaseProperties, setDatabaseProperties] =
     useState<Property[]>([]);
+
+  // Load the signed-in user's saved listings so hearts survive refreshes and devices.
+  useEffect(() => {
+    if (!userId) return;
+    let active = true;
+    getFavoriteIds(userId)
+      .then((ids) => {
+        if (active) setFavorites((current) => [...new Set([...current, ...ids])]);
+      })
+      .catch((error: unknown) =>
+        console.error("GIDALINK FAVORITES ERROR:", error)
+      );
+    return () => {
+      active = false;
+    };
+  }, [userId]);
+
+  // Close the detail dialog with Escape.
+  useEffect(() => {
+    if (!selectedProperty) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setSelectedProperty(null);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [selectedProperty]);
   const [loadingProperties, setLoadingProperties] = useState(true);
   const [databaseError, setDatabaseError] = useState("");
 
@@ -308,23 +344,17 @@ function App() {
       setLoadingProperties(true);
       setDatabaseError("");
 
-      const { data, error } = await supabase
-        .from("properties")
-        .select("*")
-        .eq("status", "verified")
-        .order("published_at", { ascending: false });
-
-      if (!active) return;
-
-      if (error) {
+      try {
+        const rows = await getPublicProperties();
+        if (!active) return;
+        setDatabaseProperties(rows.map(mapDatabaseProperty));
+      } catch (error) {
+        if (!active) return;
         console.error("GIDALINK PROPERTY ERROR:", error);
         setDatabaseError(
           "Live listings could not be loaded. Showing sample properties instead."
         );
         setDatabaseProperties([]);
-      } else {
-        const mapped = (data || []).map(mapDatabaseProperty);
-        setDatabaseProperties(mapped);
       }
 
       setLoadingProperties(false);
@@ -394,7 +424,11 @@ function App() {
     }
 
     if (sort === "newest") {
-      filtered.sort((a, b) => b.id.localeCompare(a.id));
+      filtered.sort(
+        (a, b) =>
+          new Date(b.createdAt ?? 0).getTime() -
+          new Date(a.createdAt ?? 0).getTime()
+      );
     }
 
     return filtered;
@@ -412,11 +446,25 @@ function App() {
   ]);
 
   const toggleFavorite = (id: string) => {
+    const wasSaved = favorites.includes(id);
+
     setFavorites((current) =>
-      current.includes(id)
-        ? current.filter((item) => item !== id)
-        : [...current, id]
+      wasSaved ? current.filter((item) => item !== id) : [...current, id]
     );
+
+    // Real listings are saved to the account. Sample listings stay local to this tab.
+    const isReal = databaseProperties.some((p) => p.id === id);
+    if (user && isReal) {
+      const request = wasSaved
+        ? removeFavorite(user.id, id)
+        : addFavorite(user.id, id);
+      request.catch((error: unknown) => {
+        console.error("GIDALINK FAVORITE ERROR:", error);
+        setFavorites((current) =>
+          wasSaved ? [...current, id] : current.filter((item) => item !== id)
+        );
+      });
+    }
   };
 
   const changeType = (type: ListingType) => {
@@ -542,14 +590,14 @@ function App() {
                 </button>
 
                 <div className="property-meta">
-                  {property.beds && (
+                  {!!property.beds && (
                     <span>
                       <BedDouble size={15} />
                       {property.beds} beds
                     </span>
                   )}
 
-                  {property.baths && (
+                  {!!property.baths && (
                     <span>
                       <Bath size={15} />
                       {property.baths} baths
@@ -641,17 +689,24 @@ function App() {
             Saved ({favorites.length})
           </button>
 
-          <button
+          {user ? (
+            <Link to="/app" className="login-button" data-testid="nav-dashboard">
+              Dashboard
+            </Link>
+          ) : (
+            <Link to="/auth" className="login-button" data-testid="nav-signin">
+              Sign in
+            </Link>
+          )}
+
+          <Link
+            to="/app/listings/new"
             className="primary-button nav-cta"
-            onClick={() =>
-              alert(
-                "Property submissions will be enabled in the next development step."
-              )
-            }
+            data-testid="nav-list-property"
           >
             List your property
             <ArrowUpRight size={15} />
-          </button>
+          </Link>
         </div>
 
         <button
@@ -1230,17 +1285,10 @@ function App() {
                   : "This listing has a verified status in GidaLink Trust. Still inspect the property and independently confirm all relevant documents before making payment."}
               </div>
 
-              <button
-                className="primary-button detail-action"
-                onClick={() =>
-                  alert(
-                    "Inspection requests will be enabled in the next development step."
-                  )
-                }
-              >
-                Request an inspection
-                <ArrowUpRight size={16} />
-              </button>
+              <ListingActions
+                propertyId={selectedProperty.id}
+                source={selectedProperty.source}
+              />
             </div>
           </section>
         </div>
