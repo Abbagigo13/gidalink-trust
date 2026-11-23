@@ -35,7 +35,7 @@
       "buyer_email",
       "buyer_password"
     ],
-    "objective": "Open {{base_url}}/app without signing in and verify the page redirects to the sign-in form titled 'Welcome back'. Sign in with email {{buyer_email}} and password {{buyer_password}} and verify the dashboard Overview is visible. Reload the page and verify the dashboard is still visible. Click 'Sign out' and verify the home page with the GidaLink navigation is visible."
+    "objective": "Open {{base_url}}/app and verify the sign-in form titled 'Welcome back' is visible. In that form enter email {{buyer_email}} and password {{buyer_password}} and click 'Sign in'. Verify a greeting that starts with 'Hello' is visible on the dashboard. Reload the page and verify the greeting that starts with 'Hello' is still visible. Click 'Sign out' and verify the home page heading 'Find a place.' is visible."
   },
   {
     "id": "K04",
