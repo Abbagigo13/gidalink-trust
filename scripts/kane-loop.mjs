@@ -17,7 +17,7 @@
  * Credentials come from .env.kane (git-ignored) or the environment and are passed to Kane as
  * secret variables. They are redacted from every file this script writes.
  */
-import { spawn, spawnSync } from "node:child_process";
+import { execSync, spawn, spawnSync } from "node:child_process";
 import {
   existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync, copyFileSync,
 } from "node:fs";
@@ -92,10 +92,36 @@ function fail(message, code = 2) {
   process.exit(code);
 }
 
-function kaneVersion() {
-  const r = spawnSync("kane-cli", ["--version"], { encoding: "utf8" });
-  if (r.error || r.status !== 0) return null;
-  return r.stdout.trim().split("\n").pop();
+/**
+ * Finds a way to start Kane without going through a shell.
+ * - Mac/Linux: `kane-cli` is a real executable on PATH.
+ * - Windows: npm installs `kane-cli.cmd`, which cannot be spawned without a shell. Running the
+ *   package's JavaScript entry with Node avoids cmd.exe and keeps the objective text intact.
+ * - Override: set KANE_CLI_PATH to the path of kane-cli.cjs.
+ */
+function resolveKane() {
+  const tryCommand = (command, prefix) => {
+    const r = spawnSync(command, [...prefix, "--version"], { encoding: "utf8" });
+    if (r.error || r.status !== 0) return null;
+    return { command, prefix, version: r.stdout.trim().split("\n").pop() };
+  };
+
+  if (process.env.KANE_CLI_PATH && existsSync(process.env.KANE_CLI_PATH)) {
+    const viaOverride = tryCommand(process.execPath, [process.env.KANE_CLI_PATH]);
+    if (viaOverride) return viaOverride;
+  }
+
+  const direct = tryCommand("kane-cli", []);
+  if (direct) return direct;
+
+  try {
+    const globalRoot = execSync("npm root -g", { encoding: "utf8" }).trim();
+    const entry = join(globalRoot, "@testmuai", "kane-cli", "bin", "kane-cli.cjs");
+    if (existsSync(entry)) return tryCommand(process.execPath, [entry]);
+  } catch {
+    /* npm not available */
+  }
+  return null;
 }
 
 async function appIsUp(url) {
@@ -107,7 +133,7 @@ async function appIsUp(url) {
   }
 }
 
-function runScenario(scenario, varsFile) {
+function runScenario(kane, scenario, varsFile) {
   return new Promise((resolve) => {
     const started = Date.now();
     const cliArgs = [
@@ -118,7 +144,7 @@ function runScenario(scenario, varsFile) {
     ];
     if (headless) cliArgs.push("--headless");
 
-    const child = spawn("kane-cli", cliArgs, { stdio: ["ignore", "pipe", "pipe"] });
+    const child = spawn(kane.command, [...kane.prefix, ...cliArgs], { stdio: ["ignore", "pipe", "pipe"] });
     const steps = [];
     let runEnd = null;
     let buffer = "";
@@ -168,10 +194,11 @@ function classify(result) {
 
 if (selected.length === 0) fail("No scenarios matched --only / --tag.");
 
-const version = kaneVersion();
-if (!version) {
+const kane = resolveKane();
+const version = kane?.version ?? null;
+if (!kane) {
   fail(
-    "kane-cli was not found.\n  Install it:  npm install -g @testmuai/kane-cli\n  Then log in: kane-cli --tui   (use /login)\n" +
+    "kane-cli could not be started from Node.\n  Install it:  npm install -g @testmuai/kane-cli\n  Then log in: kane-cli --tui   (use /login)\n  Windows tip: if it works in your terminal but not here, set KANE_CLI_PATH to the full path of\n  <npm root -g>\\@testmuai\\kane-cli\\bin\\kane-cli.cjs\n" +
       (gate ? "  To skip this gate once, set KANE_SKIP=1 (the skip is not recorded as a pass)." : "")
   );
 }
@@ -207,7 +234,7 @@ const results = [];
 try {
   for (const scenario of selected) {
     process.stdout.write(`[kane] ${scenario.id} ${scenario.title} ... `);
-    const raw = await runScenario(scenario, varsFile);
+    const raw = await runScenario(kane, scenario, varsFile);
     const status = classify(raw);
     const failedStep = raw.steps.find((s) => s.status === "failed") ?? null;
 
