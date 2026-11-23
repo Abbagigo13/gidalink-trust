@@ -1,0 +1,577 @@
+{
+  "generatedAt": "2026-11-23T10:22:34.253Z",
+  "baseUrl": "http://localhost:5173",
+  "kaneVersion": "0.10.8",
+  "mode": "tag:smoke",
+  "totals": {
+    "passed": 1,
+    "failed": 2,
+    "error": 0
+  },
+  "scenarios": [
+    {
+      "id": "K01",
+      "title": "Public property discovery",
+      "tags": [
+        "smoke",
+        "public"
+      ],
+      "objective": "Open {{base_url}}. Click 'Explore properties' in the top navigation and verify the heading 'Find your place.' is visible and the result count shows 'PROPERTIES'. Click the 'Buy' tab in the listing toolbar and verify at least one property card with a price in Naira (₦) is shown. Click 'View details' on the first card and verify a dialog opens showing a disclaimer that tells the visitor to independently confirm documents or not to send money.",
+      "status": "passed",
+      "durationSec": 122.5,
+      "summary": "You asked to explore the property listings, switch to properties for sale, and open the first listing’s details.\nOpened the property directory, where the “Find your place.” heading and a result count of 4 properties were shown.\nSelected the Buy tab and confirmed listings with prices in Nigerian naira were displayed.\nOpened the first property’s details, which displayed a safety disclaimer advising visitors to independently confirm documents or not send money.\nCompleted the requested property-browsing steps successfully.",
+      "steps": [
+        {
+          "step": 2,
+          "status": "running",
+          "remark": "Step 1"
+        },
+        {
+          "step": 2,
+          "status": "done",
+          "remark": "navigate: Navigate to {{global.base_url}}"
+        },
+        {
+          "step": 3,
+          "status": "running",
+          "remark": "Step 2"
+        },
+        {
+          "step": 3,
+          "status": "done",
+          "remark": "click: Clicking Explore properties in the top navigation"
+        },
+        {
+          "step": 4,
+          "status": "running",
+          "remark": "Step 3"
+        },
+        {
+          "step": 4,
+          "status": "done",
+          "remark": "analyze: the result count shows 'PROPERTIES'"
+        },
+        {
+          "step": 5,
+          "status": "running",
+          "remark": "Step 4"
+        },
+        {
+          "step": 5,
+          "status": "done",
+          "remark": "analyze: the result count shows 'PROPERTIES'"
+        },
+        {
+          "step": 6,
+          "status": "running",
+          "remark": "Step 5"
+        },
+        {
+          "step": 6,
+          "status": "done",
+          "remark": "assert: the heading 'Find your place.' is visible and the result count shows 'PROPERTIES"
+        },
+        {
+          "step": 7,
+          "status": "running",
+          "remark": "Step 6"
+        },
+        {
+          "step": 7,
+          "status": "done",
+          "remark": "click: Clicking the Buy tab in the listing toolbar"
+        },
+        {
+          "step": 8,
+          "status": "running",
+          "remark": "Step 7"
+        },
+        {
+          "step": 8,
+          "status": "done",
+          "remark": "analyze: ANALYZE(textual_visual, 'at least one property card with a price in Naira (₦) is"
+        },
+        {
+          "step": 9,
+          "status": "running",
+          "remark": "Step 8"
+        },
+        {
+          "step": 9,
+          "status": "done",
+          "remark": "assert: at least one property card with a price in Naira (₦) is shown"
+        },
+        {
+          "step": 10,
+          "status": "running",
+          "remark": "Step 9"
+        },
+        {
+          "step": 10,
+          "status": "done",
+          "remark": "click: Clicking View details on the first property card"
+        },
+        {
+          "step": 11,
+          "status": "running",
+          "remark": "Step 10"
+        },
+        {
+          "step": 11,
+          "status": "done",
+          "remark": "analyze: ANALYZE(textual_visual, 'the dialog shows a disclaimer that tells the visitor to"
+        },
+        {
+          "step": 12,
+          "status": "running",
+          "remark": "Step 11"
+        },
+        {
+          "step": 12,
+          "status": "done",
+          "remark": "assert: a dialog opens showing a disclaimer that tells the visitor to independently conf"
+        }
+      ],
+      "failure": null,
+      "testUrl": "https://test-manager.lambdatest.com/projects/01M83XMYZ96RHEKPYV21M793TH/test-cases/01M83Y979559NRGQRJ0B53ZNSF/dashboard/share/US_MTLILTSLJOAYA6C8PXY3UTBBPZ5YRUW53UEKMP9LU1FPFHWRT82CC3XOOY9WPWKZ?type=summary&agentView=true&fqdn=summary-page"
+    },
+    {
+      "id": "K03",
+      "title": "Login, protected routes and logout",
+      "tags": [
+        "smoke",
+        "auth"
+      ],
+      "objective": "Open {{base_url}}/app without signing in and verify the page redirects to the sign-in form titled 'Welcome back'. Sign in with email {{buyer_email}} and password {{buyer_password}} and verify the dashboard Overview is visible. Reload the page and verify the dashboard is still visible. Click 'Sign out' and verify the home page with the GidaLink navigation is visible.",
+      "status": "failed",
+      "durationSec": 136.8,
+      "summary": "After the account was signed out, the app sent the browser to the authentication page at /auth?next=%2Fapp instead of the requested GidaLink home page.\nUpdate the sign-out flow to send users to the GidaLink home page and render its normal navigation after logout.\nevidence: objective_contradiction: check FAILED: the home page is visible — expected: true | observed: {{home_page_visible}}\nevidence: objective_contradiction: check FAILED: the GidaLink navigation is visible — expected: true | observed: {{gidalink_navigation_visible}}",
+      "steps": [
+        {
+          "step": 2,
+          "status": "running",
+          "remark": "Step 1"
+        },
+        {
+          "step": 2,
+          "status": "done",
+          "remark": "navigate: Navigate to {{global.base_url}}/app"
+        },
+        {
+          "step": 3,
+          "status": "running",
+          "remark": "Step 2"
+        },
+        {
+          "step": 3,
+          "status": "done",
+          "remark": "analyze: the sign-in form is titled 'Welcome back'"
+        },
+        {
+          "step": 4,
+          "status": "running",
+          "remark": "Step 3"
+        },
+        {
+          "step": 4,
+          "status": "done",
+          "remark": "assert: the page redirects to the sign-in form titled 'Welcome back'"
+        },
+        {
+          "step": 5,
+          "status": "running",
+          "remark": "Step 4"
+        },
+        {
+          "step": 5,
+          "status": "done",
+          "remark": "wait: queued plan (3 steps): type \"Email\"; type \"Password\"; click \"Sign in\""
+        },
+        {
+          "step": 6,
+          "status": "running",
+          "remark": "Step 5"
+        },
+        {
+          "step": 6,
+          "status": "done",
+          "remark": "type: Type \"{{global.buyer_email}}\" into \"Email\""
+        },
+        {
+          "step": 7,
+          "status": "running",
+          "remark": "Step 6"
+        },
+        {
+          "step": 7,
+          "status": "done",
+          "remark": "type: Type \"{{secrets.user.buyer_password}}\" into \"Password\""
+        },
+        {
+          "step": 8,
+          "status": "running",
+          "remark": "Step 7"
+        },
+        {
+          "step": 8,
+          "status": "done",
+          "remark": ""
+        },
+        {
+          "step": 9,
+          "status": "running",
+          "remark": "Step 8"
+        },
+        {
+          "step": 9,
+          "status": "done",
+          "remark": "click: Clicking Sign in with email and password"
+        },
+        {
+          "step": 10,
+          "status": "running",
+          "remark": "Step 9"
+        },
+        {
+          "step": 10,
+          "status": "done",
+          "remark": "wait: PRIMARY: wait for the dashboard heading 'Overview' to be visible"
+        },
+        {
+          "step": 11,
+          "status": "running",
+          "remark": "Step 10"
+        },
+        {
+          "step": 11,
+          "status": "done",
+          "remark": "analyze: the dashboard Overview is visible"
+        },
+        {
+          "step": 12,
+          "status": "running",
+          "remark": "Step 11"
+        },
+        {
+          "step": 12,
+          "status": "done",
+          "remark": "assert: the dashboard Overview is visible"
+        },
+        {
+          "step": 2,
+          "status": "running",
+          "remark": "Step 1"
+        },
+        {
+          "step": 2,
+          "status": "done",
+          "remark": "analyze: the dashboard is still visible"
+        },
+        {
+          "step": 3,
+          "status": "running",
+          "remark": "Step 2"
+        },
+        {
+          "step": 3,
+          "status": "done",
+          "remark": "assert: the dashboard is still visible"
+        },
+        {
+          "step": 4,
+          "status": "running",
+          "remark": "Step 3"
+        },
+        {
+          "step": 4,
+          "status": "done",
+          "remark": "click: Clicking Sign out in the left sidebar account section"
+        },
+        {
+          "step": 5,
+          "status": "running",
+          "remark": "Step 4"
+        },
+        {
+          "step": 5,
+          "status": "done",
+          "remark": "wait: PRIMARY: wait for the signed-out page to finish loading"
+        },
+        {
+          "step": 6,
+          "status": "running",
+          "remark": "Step 5"
+        },
+        {
+          "step": 6,
+          "status": "done",
+          "remark": "analyze: the home page is visible"
+        },
+        {
+          "step": 7,
+          "status": "running",
+          "remark": "Step 6"
+        },
+        {
+          "step": 7,
+          "status": "failed",
+          "remark": "assert: the home page with the GidaLink navigation is visible"
+        }
+      ],
+      "failure": {
+        "step": 7,
+        "remark": "assert: the home page with the GidaLink navigation is visible"
+      },
+      "testUrl": "https://test-manager.lambdatest.com/projects/01M83XMYZ96RHEKPYV21M793TH/test-cases/01M83YEYX05SZ8RJP24W49QTGY/dashboard/share/US_8D3V8G52EDF98GTNQ3Z0RA07IZVX81WWG6GVJSKZW39HLZG8MI6HG6M4S2P8COF1?type=summary&agentView=true&fqdn=summary-page"
+    },
+    {
+      "id": "K07",
+      "title": "Buyer permissions are enforced",
+      "tags": [
+        "smoke",
+        "permissions"
+      ],
+      "objective": "Open {{base_url}}/auth and sign in with email {{buyer_email}} and password {{buyer_password}}. Verify the sidebar does not contain 'My listings', 'Verification queue' or 'Admin'. Open {{base_url}}/app/review and verify the page says 'You do not have access to this page'. Open {{base_url}}/app/admin and verify the same message. Open {{base_url}}/app/listings/new and verify the page does not show the 'List your property.' form.",
+      "status": "failed",
+      "durationSec": 222.4,
+      "summary": "The test opened the admin page rather than the new-listing page specified in the objective. The account was a buyer and correctly saw an access message for that unrelated admin area.\nCorrect the navigation target to /app/listings/new, wait for that page to finish loading, and assert that “List your property.” is not visible there.",
+      "steps": [
+        {
+          "step": 2,
+          "status": "running",
+          "remark": "Step 1"
+        },
+        {
+          "step": 2,
+          "status": "done",
+          "remark": "navigate: Navigate to {{global.base_url}}/auth"
+        },
+        {
+          "step": 3,
+          "status": "running",
+          "remark": "Step 2"
+        },
+        {
+          "step": 3,
+          "status": "done",
+          "remark": "wait: queued plan (3 steps): type \"Email\"; type \"Password\"; click \"Sign in\""
+        },
+        {
+          "step": 4,
+          "status": "running",
+          "remark": "Step 3"
+        },
+        {
+          "step": 4,
+          "status": "done",
+          "remark": "type: Type \"{{global.buyer_email}}\" into \"Email\""
+        },
+        {
+          "step": 5,
+          "status": "running",
+          "remark": "Step 4"
+        },
+        {
+          "step": 5,
+          "status": "done",
+          "remark": "type: Type \"{{secrets.user.buyer_password}}\" into \"Password\""
+        },
+        {
+          "step": 6,
+          "status": "running",
+          "remark": "Step 5"
+        },
+        {
+          "step": 6,
+          "status": "done",
+          "remark": ""
+        },
+        {
+          "step": 7,
+          "status": "running",
+          "remark": "Step 6"
+        },
+        {
+          "step": 7,
+          "status": "done",
+          "remark": "click: Signing in with email and password"
+        },
+        {
+          "step": 8,
+          "status": "running",
+          "remark": "Step 7"
+        },
+        {
+          "step": 8,
+          "status": "done",
+          "remark": "analyze: the sidebar does not contain 'Admin'"
+        },
+        {
+          "step": 9,
+          "status": "running",
+          "remark": "Step 8"
+        },
+        {
+          "step": 9,
+          "status": "done",
+          "remark": "assert: the sidebar does not contain 'My listings', 'Verification queue' or 'Admin'"
+        },
+        {
+          "step": 10,
+          "status": "running",
+          "remark": "Step 9"
+        },
+        {
+          "step": 10,
+          "status": "done",
+          "remark": "navigate: PRIMARY: Open {{global.base_url}}/app/review"
+        },
+        {
+          "step": 11,
+          "status": "running",
+          "remark": "Step 10"
+        },
+        {
+          "step": 11,
+          "status": "done",
+          "remark": "wait: PRIMARY: wait for the access-denied page to load"
+        },
+        {
+          "step": 12,
+          "status": "running",
+          "remark": "Step 11"
+        },
+        {
+          "step": 12,
+          "status": "done",
+          "remark": "analyze: the page says 'You do not have access to this page'"
+        },
+        {
+          "step": 13,
+          "status": "running",
+          "remark": "Step 12"
+        },
+        {
+          "step": 13,
+          "status": "done",
+          "remark": "assert: the page says 'You do not have access to this page'"
+        },
+        {
+          "step": 2,
+          "status": "running",
+          "remark": "Step 1"
+        },
+        {
+          "step": 2,
+          "status": "done",
+          "remark": "navigate: Navigate to {{global.base_url}}/app/admin"
+        },
+        {
+          "step": 3,
+          "status": "running",
+          "remark": "Step 2"
+        },
+        {
+          "step": 3,
+          "status": "done",
+          "remark": "analyze: the same message is verified"
+        },
+        {
+          "step": 4,
+          "status": "running",
+          "remark": "Step 3"
+        },
+        {
+          "step": 4,
+          "status": "done",
+          "remark": "assert: the same message is verified"
+        },
+        {
+          "step": 5,
+          "status": "running",
+          "remark": "Step 4"
+        },
+        {
+          "step": 6,
+          "status": "running",
+          "remark": "Step 5"
+        },
+        {
+          "step": 7,
+          "status": "running",
+          "remark": "Step 6"
+        },
+        {
+          "step": 8,
+          "status": "running",
+          "remark": "Step 7"
+        },
+        {
+          "step": 8,
+          "status": "done",
+          "remark": "wait: Waiting after confirming the 'List your property.' form is absent"
+        },
+        {
+          "step": 9,
+          "status": "running",
+          "remark": "Step 8"
+        },
+        {
+          "step": 10,
+          "status": "running",
+          "remark": "Step 9"
+        },
+        {
+          "step": 11,
+          "status": "running",
+          "remark": "Step 10"
+        },
+        {
+          "step": 12,
+          "status": "running",
+          "remark": "Step 11"
+        },
+        {
+          "step": 13,
+          "status": "running",
+          "remark": "Step 12"
+        },
+        {
+          "step": 13,
+          "status": "done",
+          "remark": "wait: Waiting after confirming the requested listing form is absent"
+        },
+        {
+          "step": 14,
+          "status": "running",
+          "remark": "Step 13"
+        },
+        {
+          "step": 15,
+          "status": "running",
+          "remark": "Step 14"
+        },
+        {
+          "step": 16,
+          "status": "running",
+          "remark": "Step 15"
+        },
+        {
+          "step": 17,
+          "status": "running",
+          "remark": "Step 16"
+        },
+        {
+          "step": 17,
+          "status": "failed",
+          "remark": "agent_info: The form is visibly absent, but its required analyzer checkpoint remains pending"
+        }
+      ],
+      "failure": {
+        "step": 17,
+        "remark": "agent_info: The form is visibly absent, but its required analyzer checkpoint remains pending"
+      },
+      "testUrl": null
+    }
+  ]
+}
