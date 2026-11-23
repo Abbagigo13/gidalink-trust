@@ -20,7 +20,8 @@ Kane's result is written back to files the agent reads, so a failing flow turns 
    kane-cli --tui        # then type /login, and /balance to check credits
    ```
 2. Apply both Supabase migrations in order (SQL Editor):
-   `supabase/migrations/20261119000000_initial_schema.sql`, then `20261122000000_trust_engine.sql`.
+   `supabase/migrations/20261119000000_initial_schema.sql`, then `20261122000000_trust_engine.sql`,
+   then `20261123000000_policy_hardening.sql` (removes any leftover public read policy on the listings table).
 3. In Supabase Authentication settings, turn **off** "Confirm email" for the test project
    (scenario K02 registers a throwaway account and expects an immediate session).
 4. Create four test users in Authentication > Users > Add user (tick "Auto Confirm User"), for example
