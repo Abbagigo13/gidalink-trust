@@ -283,7 +283,7 @@ Never claim:
 
 ## 10. Kane closed loop (implemented)
 
-Scenarios K01 to K10 live in `kane/scenarios.json` and run through `npm run kane`.
+Scenarios K01 to K11 live in `kane/scenarios.json` and run through `npm run kane`.
 Results are written to `kane/reports/latest.json` and `KANE_FEEDBACK.md`, shown on the dashboard
 "Kane quality" page, and enforced before `git push` by `npm run kane:gate`.
 Setup, test accounts and the daily loop are in `docs/KANE.md`.
