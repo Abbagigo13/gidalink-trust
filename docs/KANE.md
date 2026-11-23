@@ -43,7 +43,7 @@ Kane's result is written back to files the agent reads, so a failing flow turns 
 ```bash
 npm run dev            # terminal 1
 npm run kane:smoke     # terminal 2: K01, K03, K07 (fast, a few credits)
-npm run kane           # everything: K01 to K10
+npm run kane           # everything: K01 to K11
 npm run kane -- --only K04,K07 --headless
 ```
 
@@ -61,7 +61,8 @@ The same prompt is available from the **Kane quality** page in the dashboard (ve
 | K04 | A landlord creates a draft; the trust engine refuses submission without photos and evidence |
 | K05 | The listing form rejects empty and invalid input |
 | K06 | The verifier queue and the rule that a rejection needs a reason |
-| K07 | A buyer cannot reach landlord, verifier or admin pages |
+| K07 | A buyer sees a restricted sidebar and cannot open the verification queue |
+| K11 | A buyer cannot open the admin or new-listing pages |
 | K08 | A landlord cannot reach verifier or admin pages |
 | K09 | Sample listings cannot receive inspections or reports |
 | K10 | The admin console shows users and the audit log |

@@ -48,8 +48,10 @@ export default function DashboardLayout() {
   const visible = items.filter((item) => role && item.roles.includes(role));
 
   const logout = async () => {
-    await signOut();
+    // Leave /app first. Clearing the session while this layout is mounted would make the
+    // route guard redirect to /auth before we reach the home page.
     navigate("/", { replace: true });
+    await signOut();
   };
 
   return (
