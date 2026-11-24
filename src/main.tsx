@@ -6,6 +6,7 @@ import App from './App.tsx'
 import { AuthProvider } from './context/AuthProvider.tsx'
 import { RequireAuth, RequireRole } from './components/RouteGuards.tsx'
 import AuthPage from './pages/AuthPage.tsx'
+import DocsPage from './pages/DocsPage.tsx'
 import DashboardLayout from './dashboard/DashboardLayout.tsx'
 import Overview from './dashboard/pages/Overview.tsx'
 import MyListings from './dashboard/pages/MyListings.tsx'
@@ -25,6 +26,7 @@ createRoot(document.getElementById('root')!).render(
           {/* Public landing page (the existing marketplace experience) */}
           <Route path="/" element={<App />} />
           <Route path="/auth" element={<AuthPage />} />
+          <Route path="/docs" element={<DocsPage />} />
 
           {/* Signed-in dashboard */}
           <Route path="/app" element={<RequireAuth />}>

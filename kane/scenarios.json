@@ -142,5 +142,16 @@
       "buyer_password"
     ],
     "objective": "Open {{base_url}}/auth and sign in with email {{buyer_email}} and password {{buyer_password}}. Open {{base_url}}/app/admin and verify the page says 'You do not have access to this page'. Open {{base_url}}/app/listings/new and verify the page says 'You do not have access to this page'."
+  },
+  {
+    "id": "K12",
+    "title": "How it works section and documentation page",
+    "tags": [
+      "public"
+    ],
+    "requires": [
+      "base_url"
+    ],
+    "objective": "Open {{base_url}}. Scroll to the section titled 'How it works' and verify the heading 'From a listing to a decision you can follow.' and the text 'What verified does and does not mean' are visible. Click 'Read the documentation' and verify the page heading 'How GidaLink Trust earns trust.' is visible, then click 'Roles and permissions' in the side list and verify the text 'Verifier and admin accounts are created by the GidaLink team' is visible."
   }
 ]

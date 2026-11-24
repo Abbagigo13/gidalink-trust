@@ -63,6 +63,7 @@ The same prompt is available from the **Kane quality** page in the dashboard (ve
 | K06 | The verifier queue and the rule that a rejection needs a reason |
 | K07 | A buyer sees a restricted sidebar and cannot open the verification queue |
 | K11 | A buyer cannot open the admin or new-listing pages |
+| K12 | The landing page "How it works" section and the documentation page (added after the last full run; run it before relying on it) |
 | K08 | A landlord cannot reach verifier or admin pages |
 | K09 | Sample listings cannot receive inspections or reports |
 | K10 | The admin console shows users and the audit log |

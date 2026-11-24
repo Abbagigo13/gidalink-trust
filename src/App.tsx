@@ -21,6 +21,7 @@ import {
 import { Link } from "react-router-dom";
 import { useAuth } from "./context/auth-context";
 import ListingActions from "./components/ListingActions";
+import HowItWorks from "./components/HowItWorks";
 import { getPublicProperties } from "./services/properties";
 import { addFavorite, getFavoriteIds, removeFavorite } from "./services/workflow";
 import type { PublicPropertyRow } from "./types";
@@ -679,6 +680,14 @@ function App() {
             How trust works
           </a>
 
+          <a href="#how-it-works" onClick={() => setMenuOpen(false)}>
+            How it works
+          </a>
+
+          <Link to="/docs" onClick={() => setMenuOpen(false)}>
+            Docs
+          </Link>
+
           <a href="#about" onClick={() => setMenuOpen(false)}>
             About us
           </a>
@@ -1140,6 +1149,8 @@ function App() {
             </div>
           </section>
 
+          <HowItWorks />
+
           <section className="closing-section">
             <div className="section-kicker">
               YOUR NEXT CHAPTER STARTS HERE
@@ -1177,7 +1188,12 @@ function App() {
           Property discovery, with trust at its heart.
         </span>
 
-        <span>© 2026 GidaLink Trust</span>
+        <span>
+          <Link to="/docs" data-testid="footer-docs">
+            Documentation
+          </Link>{" "}
+          · © 2026 GidaLink Trust
+        </span>
       </footer>
 
       {selectedProperty && (
