@@ -13,7 +13,7 @@ export function FullScreenLoader({ label = "Loading" }: { label?: string }) {
 
 /** Requires a signed-in user. Redirects to /auth and remembers where they were going. */
 export function RequireAuth() {
-  const { user, profile, loading } = useAuth();
+  const { user, profile, loading, refreshProfile } = useAuth();
   const location = useLocation();
 
   if (loading) return <FullScreenLoader label="Checking your session" />;
@@ -25,8 +25,13 @@ export function RequireAuth() {
 
   if (!profile) {
     return (
-      <div className="dash-loader">
-        We could not load your profile. Refresh the page or sign in again.
+      <div className="dash-loader" role="alert" data-testid="profile-error">
+        <div className="dash-empty">
+          <p>We could not load your profile after several attempts.</p>
+          <button className="btn-ghost" onClick={() => void refreshProfile()}>
+            Try again
+          </button>
+        </div>
       </div>
     );
   }
