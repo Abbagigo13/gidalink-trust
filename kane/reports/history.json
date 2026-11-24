@@ -33,5 +33,37 @@
       "error": 0
     },
     "failedIds": []
+  },
+  {
+    "generatedAt": "2026-11-24T10:21:17.313Z",
+    "mode": "full",
+    "totals": {
+      "passed": 10,
+      "failed": 1,
+      "error": 0
+    },
+    "failedIds": [
+      "K07"
+    ]
+  },
+  {
+    "generatedAt": "2026-11-24T10:25:26.014Z",
+    "mode": "selected",
+    "totals": {
+      "passed": 1,
+      "failed": 0,
+      "error": 0
+    },
+    "failedIds": []
+  },
+  {
+    "generatedAt": "2026-11-24T10:53:08.265Z",
+    "mode": "full",
+    "totals": {
+      "passed": 11,
+      "failed": 0,
+      "error": 0
+    },
+    "failedIds": []
   }
 ]

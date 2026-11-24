@@ -1,14 +1,225 @@
 {
-  "generatedAt": "2026-11-23T10:57:28.197Z",
+  "generatedAt": "2026-11-24T10:53:08.265Z",
   "baseUrl": "http://localhost:5173",
   "kaneVersion": "0.10.8",
-  "mode": "selected",
+  "mode": "full",
   "totals": {
-    "passed": 1,
+    "passed": 11,
     "failed": 0,
     "error": 0
   },
   "scenarios": [
+    {
+      "id": "K01",
+      "title": "Public property discovery",
+      "tags": [
+        "smoke",
+        "public"
+      ],
+      "objective": "Open {{base_url}}. Click 'Explore properties' in the top navigation and verify the heading 'Find your place.' is visible and the result count shows 'PROPERTIES'. Click the 'Buy' tab in the listing toolbar and verify at least one property card with a price in Naira (₦) is shown. Click 'View details' on the first card and verify a dialog opens showing a disclaimer that tells the visitor to independently confirm documents or not to send money.",
+      "status": "passed",
+      "durationSec": 103.7,
+      "summary": "You asked to explore property listings, switch to homes for sale, and open the first listing’s details.\nOpened the property directory from the top navigation, where the “Find your place.” heading and property results were displayed.\nSelected the Buy tab; property cards appeared with Naira pricing, including ₦185,000,000.\nOpened the first listing’s details, which displayed a notice advising visitors to independently confirm relevant documents or not send money.\nThe requested property-browsing flow was completed successfully.",
+      "steps": [
+        {
+          "step": 2,
+          "status": "running",
+          "remark": "Step 1"
+        },
+        {
+          "step": 2,
+          "status": "done",
+          "remark": "navigate: Navigate to {{global.base_url}}"
+        },
+        {
+          "step": 3,
+          "status": "running",
+          "remark": "Step 2"
+        },
+        {
+          "step": 3,
+          "status": "done",
+          "remark": "click: Clicking Explore properties in the top navigation"
+        },
+        {
+          "step": 4,
+          "status": "running",
+          "remark": "Step 3"
+        },
+        {
+          "step": 4,
+          "status": "done",
+          "remark": "analyze: the result count shows 'PROPERTIES'"
+        },
+        {
+          "step": 5,
+          "status": "running",
+          "remark": "Step 4"
+        },
+        {
+          "step": 5,
+          "status": "done",
+          "remark": "assert: the heading 'Find your place.' is visible and the result count shows 'PROPERTIES"
+        },
+        {
+          "step": 6,
+          "status": "running",
+          "remark": "Step 5"
+        },
+        {
+          "step": 6,
+          "status": "done",
+          "remark": "click: Clicking the Buy tab in the listing toolbar"
+        },
+        {
+          "step": 7,
+          "status": "running",
+          "remark": "Step 6"
+        },
+        {
+          "step": 7,
+          "status": "done",
+          "remark": "analyze: a price in Naira (₦) is shown on a property card"
+        },
+        {
+          "step": 8,
+          "status": "running",
+          "remark": "Step 7"
+        },
+        {
+          "step": 8,
+          "status": "done",
+          "remark": "assert: at least one property card with a price in Naira (₦) is shown"
+        },
+        {
+          "step": 9,
+          "status": "running",
+          "remark": "Step 8"
+        },
+        {
+          "step": 9,
+          "status": "done",
+          "remark": "click: Clicking View details on the first property card"
+        },
+        {
+          "step": 10,
+          "status": "running",
+          "remark": "Step 9"
+        },
+        {
+          "step": 10,
+          "status": "done",
+          "remark": "analyze: ANALYZE(textual_visual, 'the dialog shows a disclaimer that tells the visitor to"
+        },
+        {
+          "step": 11,
+          "status": "running",
+          "remark": "Step 10"
+        },
+        {
+          "step": 11,
+          "status": "done",
+          "remark": "assert: a dialog opens showing a disclaimer that tells the visitor to independently conf"
+        }
+      ],
+      "failure": null,
+      "testUrl": "https://test-manager.lambdatest.com/projects/01M83XMYZ96RHEKPYV21M793TH/test-cases/01M86HH2T446CB6DKJRSGYNKRA/dashboard/share/US_CIOO64H3PWRER4WA75GXA7TYEY4KG6LN8OS6PSMS08EALKTOYEN2U2XCTFZ0R2C2?type=summary&agentView=true&fqdn=summary-page"
+    },
+    {
+      "id": "K02",
+      "title": "Register a new buyer account",
+      "tags": [
+        "auth"
+      ],
+      "objective": "Open {{base_url}}/auth?mode=register. Create an account with full name 'Kane Buyer', email {{smart.random_email}}, password {{kane_password}} and the role 'Buyer or renter'. Submit the form and verify the dashboard greeting 'Hello, Kane.' is visible and the role badge shows 'buyer'.",
+      "status": "passed",
+      "durationSec": 91.1,
+      "summary": "Created an account for Kane Buyer using the requested buyer or renter role.\nSubmitted the registration form and reached the account dashboard.\nConfirmed the dashboard displays “Hello, Kane.” and the account role is shown as buyer.",
+      "steps": [
+        {
+          "step": 2,
+          "status": "running",
+          "remark": "Step 1"
+        },
+        {
+          "step": 2,
+          "status": "done",
+          "remark": "navigate: Navigate to {{global.base_url}}/auth?mode=register"
+        },
+        {
+          "step": 3,
+          "status": "running",
+          "remark": "Step 2"
+        },
+        {
+          "step": 3,
+          "status": "done",
+          "remark": "type: Typing Kane Buyer in full name field"
+        },
+        {
+          "step": 4,
+          "status": "running",
+          "remark": "Step 3"
+        },
+        {
+          "step": 4,
+          "status": "done",
+          "remark": "type: Typing an email in the email field"
+        },
+        {
+          "step": 5,
+          "status": "running",
+          "remark": "Step 4"
+        },
+        {
+          "step": 5,
+          "status": "done",
+          "remark": "type: Typing password into the password field"
+        },
+        {
+          "step": 6,
+          "status": "running",
+          "remark": "Step 5"
+        },
+        {
+          "step": 6,
+          "status": "done",
+          "remark": "click: Clicking Create account button"
+        },
+        {
+          "step": 7,
+          "status": "running",
+          "remark": "Step 6"
+        },
+        {
+          "step": 7,
+          "status": "done",
+          "remark": "wait: PRIMARY: wait for the dashboard greeting 'Hello, Kane.' to appear"
+        },
+        {
+          "step": 8,
+          "status": "running",
+          "remark": "Step 7"
+        },
+        {
+          "step": 8,
+          "status": "done",
+          "remark": "analyze: the role badge shows 'buyer'."
+        },
+        {
+          "step": 9,
+          "status": "running",
+          "remark": "Step 8"
+        },
+        {
+          "step": 9,
+          "status": "done",
+          "remark": "assert: the dashboard greeting 'Hello, Kane.' is visible and the role badge shows 'buyer"
+        }
+      ],
+      "failure": null,
+      "testUrl": "https://test-manager.lambdatest.com/projects/01M83XMYZ96RHEKPYV21M793TH/test-cases/01M86HNNEGMTTGM88C8TAXPG23/dashboard/share/US_WANZMB7HDRDYS1FI9DSTNK0XKRS17Q2WALVKDDVNRQVUDOJF0JOAN4CDC62GVWFL?type=summary&agentView=true&fqdn=summary-page"
+    },
     {
       "id": "K03",
       "title": "Login, protected routes and logout",
@@ -18,8 +229,8 @@
       ],
       "objective": "Open {{base_url}}/app and verify the sign-in form titled 'Welcome back' is visible. In that form enter email {{buyer_email}} and password {{buyer_password}} and click 'Sign in'. Verify a greeting that starts with 'Hello' is visible on the dashboard. Reload the page and verify the greeting that starts with 'Hello' is still visible. Click 'Sign out' and verify the home page heading 'Find a place.' is visible.",
       "status": "passed",
-      "durationSec": 145.6,
-      "summary": "You asked to reload the dashboard and then sign out.\nThe dashboard was reloaded, and the “Hello” greeting remained visible afterward.\nSign-out was completed successfully, returning to the home page with the heading “Find a place.” visible.",
+      "durationSec": 99.6,
+      "summary": "Reloaded the page as requested and confirmed the signed-in greeting beginning with “Hello” was still displayed.\nClicked “Sign out.”\nThe site returned to the home page, where the “Find a place.” heading was visible.",
       "steps": [
         {
           "step": 2,
@@ -99,7 +310,7 @@
         {
           "step": 9,
           "status": "done",
-          "remark": "click: Clicking Sign in"
+          "remark": "click: Clicking Sign in in the sign-in form"
         },
         {
           "step": 10,
@@ -109,7 +320,7 @@
         {
           "step": 10,
           "status": "done",
-          "remark": "wait: PRIMARY: wait for sign-in submission to finish"
+          "remark": "wait: PRIMARY: wait for a greeting that starts with 'Hello' to appear on the dashboard"
         },
         {
           "step": 11,
@@ -119,7 +330,17 @@
         {
           "step": 11,
           "status": "done",
-          "remark": "wait: Waiting confirm successful sign-in"
+          "remark": "analyze: ANALYZE(textual_visual, \"a greeting that starts with 'Hello' is visible on the d"
+        },
+        {
+          "step": 12,
+          "status": "running",
+          "remark": "Step 11"
+        },
+        {
+          "step": 12,
+          "status": "done",
+          "remark": "assert: a greeting that starts with 'Hello' is visible on the dashboard"
         },
         {
           "step": 2,
@@ -129,7 +350,7 @@
         {
           "step": 2,
           "status": "done",
-          "remark": "analyze: ANALYZE(textual_visual, \"a greeting that starts with 'Hello' is visible on the d"
+          "remark": "wait: PRIMARY: Reload the page"
         },
         {
           "step": 3,
@@ -139,7 +360,7 @@
         {
           "step": 3,
           "status": "done",
-          "remark": "assert: a greeting that starts with 'Hello' is visible on the dashboard"
+          "remark": "analyze: the greeting that starts with 'Hello' is still visible"
         },
         {
           "step": 4,
@@ -149,7 +370,7 @@
         {
           "step": 4,
           "status": "done",
-          "remark": "wait: PRIMARY: reload the page"
+          "remark": "assert: the greeting that starts with 'Hello' is still visible"
         },
         {
           "step": 5,
@@ -159,7 +380,7 @@
         {
           "step": 5,
           "status": "done",
-          "remark": "analyze: the greeting that starts with 'Hello' is still visible"
+          "remark": "click: Clicking Sign out in the left sidebar account section"
         },
         {
           "step": 6,
@@ -169,7 +390,7 @@
         {
           "step": 6,
           "status": "done",
-          "remark": "assert: the greeting that starts with 'Hello' is still visible"
+          "remark": "analyze: the home page heading 'Find a place.' is visible"
         },
         {
           "step": 7,
@@ -179,7 +400,83 @@
         {
           "step": 7,
           "status": "done",
-          "remark": "click: Clicking Sign out in the left account sidebar"
+          "remark": "assert: the home page heading 'Find a place.' is visible"
+        }
+      ],
+      "failure": null,
+      "testUrl": "https://test-manager.lambdatest.com/projects/01M83XMYZ96RHEKPYV21M793TH/test-cases/01M86HSPPV4EYYCNZM2WZKDY41/dashboard/share/US_E4WC3PHHWLPUDWZ3URS2WAZTKREHRDUP0NWOQXSU13UGLDFMDE6ZQQDC7D788H3J?type=summary&agentView=true&fqdn=summary-page"
+    },
+    {
+      "id": "K04",
+      "title": "Landlord creates a draft and cannot submit without evidence",
+      "tags": [
+        "listings",
+        "trust"
+      ],
+      "objective": "Open {{base_url}}/auth and sign in with email {{landlord_email}} and password {{landlord_password}}. Open 'My listings' and click 'New listing'. Fill the form with title 'Kane test flat in Gwarinpa', listing type Rent, price 4500000, 3 bedrooms, 3 bathrooms, address '12 Test Close, Gwarinpa', city 'Abuja', state 'FCT' and a description of at least 30 characters, then click 'Create draft'. Verify the page heading 'Edit listing.' and a 'Draft' badge are visible. Click 'Submit for review' without uploading anything and verify an error says a photograph or ownership document is required before submitting.",
+      "status": "passed",
+      "durationSec": 163.6,
+      "summary": "Signed in and opened My listings to start a new property listing.\nCreated a draft rental listing titled “Kane test flat in Gwarinpa” with the requested price, bedrooms, bathrooms, Abuja address, FCT state, and description.\nThe listing opened in edit mode and showed a Draft status.\nTried to submit the listing for review without uploading files; the page correctly required at least one photograph or ownership document before submission.",
+      "steps": [
+        {
+          "step": 2,
+          "status": "running",
+          "remark": "Step 1"
+        },
+        {
+          "step": 2,
+          "status": "done",
+          "remark": "navigate: Navigate to {{global.base_url}}/auth"
+        },
+        {
+          "step": 3,
+          "status": "running",
+          "remark": "Step 2"
+        },
+        {
+          "step": 3,
+          "status": "done",
+          "remark": "wait: queued plan (3 steps): type \"Email\"; type \"Password\"; click \"Sign in\""
+        },
+        {
+          "step": 4,
+          "status": "running",
+          "remark": "Step 3"
+        },
+        {
+          "step": 4,
+          "status": "done",
+          "remark": "type: Type \"{{global.landlord_email}}\" into \"Email\""
+        },
+        {
+          "step": 5,
+          "status": "running",
+          "remark": "Step 4"
+        },
+        {
+          "step": 5,
+          "status": "done",
+          "remark": "type: Type \"{{secrets.user.landlord_password}}\" into \"Password\""
+        },
+        {
+          "step": 6,
+          "status": "running",
+          "remark": "Step 5"
+        },
+        {
+          "step": 6,
+          "status": "done",
+          "remark": ""
+        },
+        {
+          "step": 7,
+          "status": "running",
+          "remark": "Step 6"
+        },
+        {
+          "step": 7,
+          "status": "done",
+          "remark": "click: Clicking Sign in on the Welcome back form"
         },
         {
           "step": 8,
@@ -189,7 +486,7 @@
         {
           "step": 8,
           "status": "done",
-          "remark": "wait: PRIMARY: wait for the signed-out home page to load"
+          "remark": "wait: PRIMARY: wait for the session check to finish"
         },
         {
           "step": 9,
@@ -199,7 +496,7 @@
         {
           "step": 9,
           "status": "done",
-          "remark": "analyze: the home page heading 'Find a place.' is visible"
+          "remark": "click: Clicking My listings link"
         },
         {
           "step": 10,
@@ -209,11 +506,1234 @@
         {
           "step": 10,
           "status": "done",
-          "remark": "assert: the home page heading 'Find a place.' is visible"
+          "remark": "click: Clicking New listing on My listings page"
+        },
+        {
+          "step": 11,
+          "status": "running",
+          "remark": "Step 10"
+        },
+        {
+          "step": 11,
+          "status": "done",
+          "remark": "wait: queued plan (8 steps): type \"Title\"; select \"Listing type\"; type \"Price (₦)\"; ty"
+        },
+        {
+          "step": 12,
+          "status": "running",
+          "remark": "Step 11"
+        },
+        {
+          "step": 12,
+          "status": "done",
+          "remark": "type: Type \"Kane test flat in Gwarinpa\" into \"Title\""
+        },
+        {
+          "step": 13,
+          "status": "running",
+          "remark": "Step 12"
+        },
+        {
+          "step": 13,
+          "status": "done",
+          "remark": "select: Select \"Rent\" in \"Listing type\""
+        },
+        {
+          "step": 14,
+          "status": "running",
+          "remark": "Step 13"
+        },
+        {
+          "step": 14,
+          "status": "done",
+          "remark": "type: Type \"4500000\" into \"Price (₦)\""
+        },
+        {
+          "step": 15,
+          "status": "running",
+          "remark": "Step 14"
+        },
+        {
+          "step": 15,
+          "status": "done",
+          "remark": "type: Type \"3\" into \"Bedrooms\""
+        },
+        {
+          "step": 16,
+          "status": "running",
+          "remark": "Step 15"
+        },
+        {
+          "step": 16,
+          "status": "done",
+          "remark": "type: Type \"3\" into \"Bathrooms\""
+        },
+        {
+          "step": 17,
+          "status": "running",
+          "remark": "Step 16"
+        },
+        {
+          "step": 17,
+          "status": "done",
+          "remark": "type: Type \"12 Test Close, Gwarinpa\" into \"Street address Shown only to staff and buye"
+        },
+        {
+          "step": 18,
+          "status": "running",
+          "remark": "Step 17"
+        },
+        {
+          "step": 18,
+          "status": "done",
+          "remark": "type: Type \"Abuja\" into \"City\""
+        },
+        {
+          "step": 19,
+          "status": "running",
+          "remark": "Step 18"
+        },
+        {
+          "step": 19,
+          "status": "done",
+          "remark": "select: Select \"FCT\" in \"State\""
+        },
+        {
+          "step": 20,
+          "status": "running",
+          "remark": "Step 19"
+        },
+        {
+          "step": 20,
+          "status": "done",
+          "remark": "wait: queued plan (2 steps): type \"Description\"; click \"Create draft\""
+        },
+        {
+          "step": 21,
+          "status": "running",
+          "remark": "Step 20"
+        },
+        {
+          "step": 21,
+          "status": "done",
+          "remark": "type: Type \"Spacious three-bedroom flat with modern finishes and secure surroundings.\""
+        },
+        {
+          "step": 22,
+          "status": "running",
+          "remark": "Step 21"
+        },
+        {
+          "step": 22,
+          "status": "done",
+          "remark": "click: Click \"Create draft\""
+        },
+        {
+          "step": 23,
+          "status": "running",
+          "remark": "Step 22"
+        },
+        {
+          "step": 23,
+          "status": "done",
+          "remark": "analyze: a 'Draft' badge is visible."
+        },
+        {
+          "step": 24,
+          "status": "running",
+          "remark": "Step 23"
+        },
+        {
+          "step": 24,
+          "status": "done",
+          "remark": "assert: the page heading 'Edit listing.' and a 'Draft' badge are visible."
+        },
+        {
+          "step": 25,
+          "status": "running",
+          "remark": "Step 24"
+        },
+        {
+          "step": 25,
+          "status": "done",
+          "remark": "scroll: Scrolling to the Submit for review button without uploading anything"
+        },
+        {
+          "step": 26,
+          "status": "running",
+          "remark": "Step 25"
+        },
+        {
+          "step": 26,
+          "status": "done",
+          "remark": "click: Clicking Submit for review without uploading anything"
+        },
+        {
+          "step": 27,
+          "status": "running",
+          "remark": "Step 26"
+        },
+        {
+          "step": 27,
+          "status": "done",
+          "remark": "analyze: ANALYZE(analyze_v3, no key)"
+        },
+        {
+          "step": 28,
+          "status": "running",
+          "remark": "Step 27"
+        },
+        {
+          "step": 28,
+          "status": "done",
+          "remark": "wait: PRIMARY: wait for submission error checkpoint processing"
+        },
+        {
+          "step": 29,
+          "status": "running",
+          "remark": "Step 28"
+        },
+        {
+          "step": 29,
+          "status": "done",
+          "remark": "wait: Waiting for final checkpoint completion"
+        },
+        {
+          "step": 30,
+          "status": "running",
+          "remark": "Step 29"
+        },
+        {
+          "step": 30,
+          "status": "done",
+          "remark": "analyze: ANALYZE(textual_visual, 'an error says a photograph or ownership document is req"
+        },
+        {
+          "step": 31,
+          "status": "running",
+          "remark": "Step 30"
+        },
+        {
+          "step": 31,
+          "status": "done",
+          "remark": "assert: an error says a photograph or ownership document is required before submitting."
         }
       ],
       "failure": null,
-      "testUrl": "https://test-manager.lambdatest.com/projects/01M83XMYZ96RHEKPYV21M793TH/test-cases/01M840NZQ5VXWAMG7ESCT5MDNZ/dashboard/share/US_YVP52RFA82RMLOP630RXRSYFVQ32R5XSK20Y3NSVA4EQB5XI7P49E25SSOPGHWI4?type=summary&agentView=true&fqdn=summary-page"
+      "testUrl": "https://test-manager.lambdatest.com/projects/01M83XMYZ96RHEKPYV21M793TH/test-cases/01M86HY16RJFRMFT76JFPR43S4/dashboard/share/US_XKJ46OSI6TLOHTPAB51Y2FO0BODTON3BB7JVC3O5BNZWTCCH9ISYW6XUVMPGI5ZK?type=summary&agentView=true&fqdn=summary-page"
+    },
+    {
+      "id": "K05",
+      "title": "Listing form rejects invalid input",
+      "tags": [
+        "listings"
+      ],
+      "objective": "Open {{base_url}}/auth and sign in with email {{landlord_email}} and password {{landlord_password}}. Open {{base_url}}/app/listings/new, leave every field empty and click 'Create draft'. Verify validation messages appear for the title, price, address, city and description fields, and that no 'Edit listing.' heading appears.",
+      "status": "passed",
+      "durationSec": 89.8,
+      "summary": "Signed in with the provided landlord account.\nOpened the new listing form, left all fields blank, and selected Create draft.\nThe form remained on the new-listing page and displayed validation messages for title, price, street address, city, and description.\nNo edit-listing heading appeared, so no listing draft was created.",
+      "steps": [
+        {
+          "step": 2,
+          "status": "running",
+          "remark": "Step 1"
+        },
+        {
+          "step": 2,
+          "status": "done",
+          "remark": "navigate: Navigate to {{global.base_url}}/auth"
+        },
+        {
+          "step": 3,
+          "status": "running",
+          "remark": "Step 2"
+        },
+        {
+          "step": 3,
+          "status": "done",
+          "remark": "wait: queued plan (3 steps): type \"Email\"; type \"Password\"; click \"Sign in\""
+        },
+        {
+          "step": 4,
+          "status": "running",
+          "remark": "Step 3"
+        },
+        {
+          "step": 4,
+          "status": "done",
+          "remark": "type: Type \"{{global.landlord_email}}\" into \"Email\""
+        },
+        {
+          "step": 5,
+          "status": "running",
+          "remark": "Step 4"
+        },
+        {
+          "step": 5,
+          "status": "done",
+          "remark": "type: Type \"{{secrets.user.landlord_password}}\" into \"Password\""
+        },
+        {
+          "step": 6,
+          "status": "running",
+          "remark": "Step 5"
+        },
+        {
+          "step": 6,
+          "status": "done",
+          "remark": ""
+        },
+        {
+          "step": 7,
+          "status": "running",
+          "remark": "Step 6"
+        },
+        {
+          "step": 7,
+          "status": "done",
+          "remark": "click: Clicking Sign in button"
+        },
+        {
+          "step": 8,
+          "status": "running",
+          "remark": "Step 7"
+        },
+        {
+          "step": 8,
+          "status": "done",
+          "remark": "wait: PRIMARY: wait for the session check to finish"
+        },
+        {
+          "step": 9,
+          "status": "running",
+          "remark": "Step 8"
+        },
+        {
+          "step": 9,
+          "status": "done",
+          "remark": "navigate: PRIMARY: Open {{global.base_url}}/app/listings/new"
+        },
+        {
+          "step": 10,
+          "status": "running",
+          "remark": "Step 9"
+        },
+        {
+          "step": 10,
+          "status": "done",
+          "remark": "click: Clicking Create draft"
+        },
+        {
+          "step": 11,
+          "status": "running",
+          "remark": "Step 10"
+        },
+        {
+          "step": 11,
+          "status": "done",
+          "remark": "analyze: No 'Edit listing.' heading appears."
+        },
+        {
+          "step": 12,
+          "status": "running",
+          "remark": "Step 11"
+        },
+        {
+          "step": 12,
+          "status": "done",
+          "remark": "assert: Validation messages appear for the title, price, address, city and description f"
+        }
+      ],
+      "failure": null,
+      "testUrl": "https://test-manager.lambdatest.com/projects/01M83XMYZ96RHEKPYV21M793TH/test-cases/01M86J4BM7D96C09VVE4ZAJE46/dashboard/share/US_VPDTJ8BAPRBHRY91A9T6E0NO0R95RQU78EZFG4HMZ69ZU0E64NI1KRBNCI8JMQSG?type=summary&agentView=true&fqdn=summary-page"
+    },
+    {
+      "id": "K06",
+      "title": "Verifier queue and decision rules",
+      "tags": [
+        "trust",
+        "verifier"
+      ],
+      "objective": "Open {{base_url}}/auth and sign in with email {{verifier_email}} and password {{verifier_password}}. Open 'Verification queue'. If the text 'The queue is clear' is shown, verify that message. Otherwise click the first listing, verify the buttons 'Approve and verify' and 'Reject' are visible, leave the notes empty, click 'Reject' and verify a message asks for the reason for rejection.",
+      "status": "passed",
+      "durationSec": 108.7,
+      "summary": "Signed in with the provided account and opened the Verification queue.\nThe queue was not clear, so the first listing was opened.\nConfirmed that “Approve and verify” and “Reject” were available, then selected “Reject” with no notes entered.\nVerified that the page asked for a reason for rejection.",
+      "steps": [
+        {
+          "step": 2,
+          "status": "running",
+          "remark": "Step 1"
+        },
+        {
+          "step": 2,
+          "status": "done",
+          "remark": "navigate: Navigate to {{global.base_url}}/auth"
+        },
+        {
+          "step": 3,
+          "status": "running",
+          "remark": "Step 2"
+        },
+        {
+          "step": 3,
+          "status": "done",
+          "remark": "wait: queued plan (3 steps): type \"Email\"; type \"Password\"; click \"Sign in\""
+        },
+        {
+          "step": 4,
+          "status": "running",
+          "remark": "Step 3"
+        },
+        {
+          "step": 4,
+          "status": "done",
+          "remark": "type: Type \"{{global.verifier_email}}\" into \"Email\""
+        },
+        {
+          "step": 5,
+          "status": "running",
+          "remark": "Step 4"
+        },
+        {
+          "step": 5,
+          "status": "done",
+          "remark": "type: Type \"{{secrets.user.verifier_password}}\" into \"Password\""
+        },
+        {
+          "step": 6,
+          "status": "running",
+          "remark": "Step 5"
+        },
+        {
+          "step": 6,
+          "status": "done",
+          "remark": ""
+        },
+        {
+          "step": 7,
+          "status": "running",
+          "remark": "Step 6"
+        },
+        {
+          "step": 7,
+          "status": "done",
+          "remark": "click: Clicking Sign in button"
+        },
+        {
+          "step": 8,
+          "status": "running",
+          "remark": "Step 7"
+        },
+        {
+          "step": 8,
+          "status": "done",
+          "remark": "wait: PRIMARY: wait for the session check to finish"
+        },
+        {
+          "step": 9,
+          "status": "running",
+          "remark": "Step 8"
+        },
+        {
+          "step": 9,
+          "status": "done",
+          "remark": "click: Clicking Verification queue link"
+        },
+        {
+          "step": 10,
+          "status": "running",
+          "remark": "Step 9"
+        },
+        {
+          "step": 10,
+          "status": "done",
+          "remark": "analyze: the text 'The queue is clear' is shown"
+        },
+        {
+          "step": 11,
+          "status": "running",
+          "remark": "Step 10"
+        },
+        {
+          "step": 2,
+          "status": "running",
+          "remark": "Step 1"
+        },
+        {
+          "step": 2,
+          "status": "done",
+          "remark": "click: Clicking the first property listing in the verification queue"
+        },
+        {
+          "step": 3,
+          "status": "running",
+          "remark": "Step 2"
+        },
+        {
+          "step": 3,
+          "status": "done",
+          "remark": "analyze: The 'Reject' button is visible."
+        },
+        {
+          "step": 4,
+          "status": "running",
+          "remark": "Step 3"
+        },
+        {
+          "step": 4,
+          "status": "done",
+          "remark": "assert: the buttons 'Approve and verify' and 'Reject' are visible"
+        },
+        {
+          "step": 5,
+          "status": "running",
+          "remark": "Step 4"
+        },
+        {
+          "step": 5,
+          "status": "done",
+          "remark": "click: Clicking Reject button"
+        },
+        {
+          "step": 6,
+          "status": "running",
+          "remark": "Step 5"
+        },
+        {
+          "step": 6,
+          "status": "done",
+          "remark": "analyze: ANALYZE(textual_visual, 'A message asking for the reason for rejection is shown."
+        },
+        {
+          "step": 7,
+          "status": "running",
+          "remark": "Step 6"
+        },
+        {
+          "step": 7,
+          "status": "done",
+          "remark": "assert: a message asks for the reason for rejection"
+        },
+        {
+          "step": 12,
+          "status": "running",
+          "remark": "Step 11"
+        },
+        {
+          "step": 12,
+          "status": "done",
+          "remark": "wait: Waiting after Verification queue checkpoint completion"
+        }
+      ],
+      "failure": null,
+      "testUrl": "https://test-manager.lambdatest.com/projects/01M83XMYZ96RHEKPYV21M793TH/test-cases/01M86J8DKEFN5XB9V5QTJBST4A/dashboard/share/US_GC32LMKTLRBFKOK1MG5U9XXV17EMR1SEOLF6ML0SDDUT914BJGDEO2WUHY4OQE8S?type=summary&agentView=true&fqdn=summary-page"
+    },
+    {
+      "id": "K07",
+      "title": "Buyer sidebar and review page are restricted",
+      "tags": [
+        "smoke",
+        "permissions"
+      ],
+      "objective": "Open {{base_url}}/auth and sign in with email {{buyer_email}} and password {{buyer_password}}. Verify the sidebar shows 'Overview' and 'Saved' but does not contain 'My listings', 'Verification queue' or 'Admin'. Open {{base_url}}/app/review and verify the page says 'You do not have access to this page'.",
+      "status": "passed",
+      "durationSec": 122.6,
+      "summary": "Signed in with the provided buyer account.\nConfirmed the available navigation included Overview and Saved, while My listings, Verification queue, and Admin were not shown.\nOpened the review page, which displayed: “You do not have access to this page.”",
+      "steps": [
+        {
+          "step": 2,
+          "status": "running",
+          "remark": "Step 1"
+        },
+        {
+          "step": 2,
+          "status": "done",
+          "remark": "navigate: Navigate to {{global.base_url}}/auth"
+        },
+        {
+          "step": 3,
+          "status": "running",
+          "remark": "Step 2"
+        },
+        {
+          "step": 3,
+          "status": "done",
+          "remark": "wait: queued plan (3 steps): type \"Email\"; type \"Password\"; click \"Sign in\""
+        },
+        {
+          "step": 4,
+          "status": "running",
+          "remark": "Step 3"
+        },
+        {
+          "step": 4,
+          "status": "done",
+          "remark": "type: Type \"{{global.buyer_email}}\" into \"Email\""
+        },
+        {
+          "step": 5,
+          "status": "running",
+          "remark": "Step 4"
+        },
+        {
+          "step": 5,
+          "status": "done",
+          "remark": "type: Type \"{{secrets.user.buyer_password}}\" into \"Password\""
+        },
+        {
+          "step": 6,
+          "status": "running",
+          "remark": "Step 5"
+        },
+        {
+          "step": 6,
+          "status": "done",
+          "remark": ""
+        },
+        {
+          "step": 7,
+          "status": "running",
+          "remark": "Step 6"
+        },
+        {
+          "step": 7,
+          "status": "done",
+          "remark": "click: Clicking Sign in with email and password"
+        },
+        {
+          "step": 8,
+          "status": "running",
+          "remark": "Step 7"
+        },
+        {
+          "step": 8,
+          "status": "done",
+          "remark": "wait: PRIMARY: wait for the signed-in application to load"
+        },
+        {
+          "step": 9,
+          "status": "running",
+          "remark": "Step 8"
+        },
+        {
+          "step": 9,
+          "status": "done",
+          "remark": "analyze: The sidebar does not contain 'Admin'."
+        },
+        {
+          "step": 10,
+          "status": "running",
+          "remark": "Step 9"
+        },
+        {
+          "step": 10,
+          "status": "done",
+          "remark": "assert: the sidebar shows 'Overview' and 'Saved' but does not contain 'My listings', 'Ve"
+        },
+        {
+          "step": 11,
+          "status": "running",
+          "remark": "Step 10"
+        },
+        {
+          "step": 11,
+          "status": "done",
+          "remark": "navigate: PRIMARY: Open {{global.base_url}}/app/review"
+        },
+        {
+          "step": 12,
+          "status": "running",
+          "remark": "Step 11"
+        },
+        {
+          "step": 12,
+          "status": "done",
+          "remark": "wait: PRIMARY: wait for the review access result to load"
+        },
+        {
+          "step": 13,
+          "status": "running",
+          "remark": "Step 12"
+        },
+        {
+          "step": 13,
+          "status": "done",
+          "remark": "analyze: The page says 'You do not have access to this page'."
+        },
+        {
+          "step": 14,
+          "status": "running",
+          "remark": "Step 13"
+        },
+        {
+          "step": 14,
+          "status": "done",
+          "remark": "assert: the page says 'You do not have access to this page'."
+        }
+      ],
+      "failure": null,
+      "testUrl": null
+    },
+    {
+      "id": "K08",
+      "title": "Landlord permissions are enforced",
+      "tags": [
+        "permissions"
+      ],
+      "objective": "Open {{base_url}}/auth and sign in with email {{landlord_email}} and password {{landlord_password}}. Verify the sidebar contains 'My listings' but does not contain 'Verification queue' or 'Admin'. Open {{base_url}}/app/review and verify the page says 'You do not have access to this page'.",
+      "status": "passed",
+      "durationSec": 107.8,
+      "summary": "Signed in using the provided landlord account.\nConfirmed the account navigation included “My listings” and did not show “Verification queue” or “Admin.”\nOpened the review page at /app/review.\nThe review page displayed “You do not have access to this page,” confirming the account does not have permission to view it.",
+      "steps": [
+        {
+          "step": 2,
+          "status": "running",
+          "remark": "Step 1"
+        },
+        {
+          "step": 2,
+          "status": "done",
+          "remark": "navigate: Navigate to {{global.base_url}}/auth"
+        },
+        {
+          "step": 3,
+          "status": "running",
+          "remark": "Step 2"
+        },
+        {
+          "step": 3,
+          "status": "done",
+          "remark": "wait: queued plan (3 steps): type \"Email\"; type \"Password\"; click \"Sign in\""
+        },
+        {
+          "step": 4,
+          "status": "running",
+          "remark": "Step 3"
+        },
+        {
+          "step": 4,
+          "status": "done",
+          "remark": "type: Type \"{{global.landlord_email}}\" into \"Email\""
+        },
+        {
+          "step": 5,
+          "status": "running",
+          "remark": "Step 4"
+        },
+        {
+          "step": 5,
+          "status": "done",
+          "remark": "type: Type \"{{secrets.user.landlord_password}}\" into \"Password\""
+        },
+        {
+          "step": 6,
+          "status": "running",
+          "remark": "Step 5"
+        },
+        {
+          "step": 6,
+          "status": "done",
+          "remark": ""
+        },
+        {
+          "step": 7,
+          "status": "running",
+          "remark": "Step 6"
+        },
+        {
+          "step": 7,
+          "status": "done",
+          "remark": "click: Signing in with email and password"
+        },
+        {
+          "step": 8,
+          "status": "running",
+          "remark": "Step 7"
+        },
+        {
+          "step": 8,
+          "status": "done",
+          "remark": "wait: PRIMARY: wait for the session check to finish"
+        },
+        {
+          "step": 9,
+          "status": "running",
+          "remark": "Step 8"
+        },
+        {
+          "step": 9,
+          "status": "done",
+          "remark": "analyze: the sidebar does not contain 'Admin'"
+        },
+        {
+          "step": 10,
+          "status": "running",
+          "remark": "Step 9"
+        },
+        {
+          "step": 10,
+          "status": "done",
+          "remark": "assert: the sidebar contains 'My listings' but does not contain 'Verification queue' or "
+        },
+        {
+          "step": 11,
+          "status": "running",
+          "remark": "Step 10"
+        },
+        {
+          "step": 11,
+          "status": "done",
+          "remark": "navigate: PRIMARY: Open {{global.base_url}}/app/review"
+        },
+        {
+          "step": 12,
+          "status": "running",
+          "remark": "Step 11"
+        },
+        {
+          "step": 12,
+          "status": "done",
+          "remark": "wait: PRIMARY: wait for the review access-denied page to load"
+        },
+        {
+          "step": 13,
+          "status": "running",
+          "remark": "Step 12"
+        },
+        {
+          "step": 13,
+          "status": "done",
+          "remark": "analyze: the page says 'You do not have access to this page'"
+        },
+        {
+          "step": 14,
+          "status": "running",
+          "remark": "Step 13"
+        },
+        {
+          "step": 14,
+          "status": "done",
+          "remark": "assert: the page says 'You do not have access to this page'"
+        }
+      ],
+      "failure": null,
+      "testUrl": null
+    },
+    {
+      "id": "K09",
+      "title": "Sample listings cannot receive inspections or reports",
+      "tags": [
+        "public",
+        "trust"
+      ],
+      "objective": "Open {{base_url}}, click 'Explore properties', click 'View details' on the first property card and verify the dialog is visible. Verify the dialog tells the visitor that inspection requests are only available for live verified listings, or that this is a sample listing, and that no date picker for an inspection is shown.",
+      "status": "passed",
+      "durationSec": 51,
+      "summary": "You asked to explore the available properties and open the details for the first listing.\nSelected “Explore properties” and opened “View details” for the first property, “Contemporary four-bedroom.”\nThe property details dialog opened and identified the listing as sample, unverified data; no inspection date picker was shown.",
+      "steps": [
+        {
+          "step": 2,
+          "status": "running",
+          "remark": "Step 1"
+        },
+        {
+          "step": 2,
+          "status": "done",
+          "remark": "navigate: Navigate to {{global.base_url}}"
+        },
+        {
+          "step": 3,
+          "status": "running",
+          "remark": "Step 2"
+        },
+        {
+          "step": 3,
+          "status": "done",
+          "remark": "click: Clicking Explore properties in the top navigation"
+        },
+        {
+          "step": 4,
+          "status": "running",
+          "remark": "Step 3"
+        },
+        {
+          "step": 4,
+          "status": "done",
+          "remark": "click: Clicking View details on the first property card"
+        },
+        {
+          "step": 5,
+          "status": "running",
+          "remark": "Step 4"
+        },
+        {
+          "step": 5,
+          "status": "done",
+          "remark": "analyze: ANALYZE(textual_visual, 'the dialog tells the visitor that inspection requests a"
+        },
+        {
+          "step": 6,
+          "status": "running",
+          "remark": "Step 5"
+        },
+        {
+          "step": 6,
+          "status": "done",
+          "remark": "assert: the dialog is visible"
+        },
+        {
+          "step": 7,
+          "status": "running",
+          "remark": "Step 6"
+        },
+        {
+          "step": 7,
+          "status": "done",
+          "remark": "assert: the dialog tells the visitor that inspection requests are only available for liv"
+        }
+      ],
+      "failure": null,
+      "testUrl": "https://test-manager.lambdatest.com/projects/01M83XMYZ96RHEKPYV21M793TH/test-cases/01M86JNQX708MBDADC6PGMTXKE/dashboard/share/US_G6UQS2512LEF2EU9OWWSGWIW53VYZ26JQ0CGFDEMGTBIO007BSJDNUXGW9283Y3C?type=summary&agentView=true&fqdn=summary-page"
+    },
+    {
+      "id": "K10",
+      "title": "Admin console shows users and audit log",
+      "tags": [
+        "admin"
+      ],
+      "objective": "Open {{base_url}}/auth and sign in with email {{admin_email}} and password {{admin_password}}. Open 'Admin' in the sidebar and verify a Users table and an Audit log section are visible. Verify the role selector in the row marked '(you)' is disabled. Open 'Reports' and verify the heading 'Suspicious reports.' is visible.",
+      "status": "passed",
+      "durationSec": 88.1,
+      "summary": "Signed in using the provided administrator account.\nOpened the Admin area and confirmed that the Users table and Audit log section were displayed.\nConfirmed that the role selector for the current user was unavailable for editing.\nOpened Reports and reached the page headed “Suspicious reports.”",
+      "steps": [
+        {
+          "step": 2,
+          "status": "running",
+          "remark": "Step 1"
+        },
+        {
+          "step": 2,
+          "status": "done",
+          "remark": "navigate: Navigate to {{global.base_url}}/auth"
+        },
+        {
+          "step": 3,
+          "status": "running",
+          "remark": "Step 2"
+        },
+        {
+          "step": 3,
+          "status": "done",
+          "remark": "wait: queued plan (3 steps): type \"Email\"; type \"Password\"; click \"Sign in\""
+        },
+        {
+          "step": 4,
+          "status": "running",
+          "remark": "Step 3"
+        },
+        {
+          "step": 4,
+          "status": "done",
+          "remark": "type: Type \"{{global.admin_email}}\" into \"Email\""
+        },
+        {
+          "step": 5,
+          "status": "running",
+          "remark": "Step 4"
+        },
+        {
+          "step": 5,
+          "status": "done",
+          "remark": "type: Type \"{{secrets.user.admin_password}}\" into \"Password\""
+        },
+        {
+          "step": 6,
+          "status": "running",
+          "remark": "Step 5"
+        },
+        {
+          "step": 6,
+          "status": "done",
+          "remark": ""
+        },
+        {
+          "step": 7,
+          "status": "running",
+          "remark": "Step 6"
+        },
+        {
+          "step": 7,
+          "status": "done",
+          "remark": "click: Clicking Sign in button"
+        },
+        {
+          "step": 8,
+          "status": "running",
+          "remark": "Step 7"
+        },
+        {
+          "step": 8,
+          "status": "done",
+          "remark": "wait: PRIMARY: wait for the application sidebar to load"
+        },
+        {
+          "step": 9,
+          "status": "running",
+          "remark": "Step 8"
+        },
+        {
+          "step": 9,
+          "status": "done",
+          "remark": "click: Clicking Admin in the left sidebar"
+        },
+        {
+          "step": 10,
+          "status": "running",
+          "remark": "Step 9"
+        },
+        {
+          "step": 10,
+          "status": "done",
+          "remark": "analyze: ANALYZE(textual_visual, \"the role selector in the row marked '(you)' is disabled"
+        },
+        {
+          "step": 11,
+          "status": "running",
+          "remark": "Step 10"
+        },
+        {
+          "step": 11,
+          "status": "done",
+          "remark": "assert: a Users table and an Audit log section are visible."
+        },
+        {
+          "step": 12,
+          "status": "running",
+          "remark": "Step 11"
+        },
+        {
+          "step": 12,
+          "status": "done",
+          "remark": "assert: the role selector in the row marked '(you)' is disabled."
+        },
+        {
+          "step": 13,
+          "status": "running",
+          "remark": "Step 12"
+        },
+        {
+          "step": 13,
+          "status": "done",
+          "remark": "click: Clicking Reports in the left sidebar"
+        },
+        {
+          "step": 14,
+          "status": "running",
+          "remark": "Step 13"
+        },
+        {
+          "step": 14,
+          "status": "done",
+          "remark": "analyze: ANALYZE(analyze_v3, no key)"
+        },
+        {
+          "step": 15,
+          "status": "running",
+          "remark": "Step 14"
+        },
+        {
+          "step": 15,
+          "status": "done",
+          "remark": "wait: Waiting after verifying the Reports page heading"
+        },
+        {
+          "step": 16,
+          "status": "running",
+          "remark": "Step 15"
+        },
+        {
+          "step": 16,
+          "status": "done",
+          "remark": "analyze: the heading 'Suspicious reports.' is visible."
+        },
+        {
+          "step": 17,
+          "status": "running",
+          "remark": "Step 16"
+        },
+        {
+          "step": 17,
+          "status": "done",
+          "remark": "assert: the heading 'Suspicious reports.' is visible."
+        }
+      ],
+      "failure": null,
+      "testUrl": "https://test-manager.lambdatest.com/projects/01M83XMYZ96RHEKPYV21M793TH/test-cases/01M86JRK088NX8EN1RCBF72GWE/dashboard/share/US_1AQ96SAYA6PPHF3DXVCTCMZDB1ZDBRF2389H5VLF9UE6LKVSWWZG9K9ZMZ30WK3P?type=summary&agentView=true&fqdn=summary-page"
+    },
+    {
+      "id": "K11",
+      "title": "Buyer cannot open admin or new-listing pages",
+      "tags": [
+        "permissions"
+      ],
+      "objective": "Open {{base_url}}/auth and sign in with email {{buyer_email}} and password {{buyer_password}}. Open {{base_url}}/app/admin and verify the page says 'You do not have access to this page'. Open {{base_url}}/app/listings/new and verify the page says 'You do not have access to this page'.",
+      "status": "passed",
+      "durationSec": 94,
+      "summary": "Signed in with the provided buyer account.\nOpened the admin page, where it displayed “You do not have access to this page.”\nOpened the new listing page, which also displayed “You do not have access to this page.”\nThe run finished on the new listing page with access denied as expected.",
+      "steps": [
+        {
+          "step": 2,
+          "status": "running",
+          "remark": "Step 1"
+        },
+        {
+          "step": 2,
+          "status": "done",
+          "remark": "navigate: Navigate to {{global.base_url}}/auth"
+        },
+        {
+          "step": 3,
+          "status": "running",
+          "remark": "Step 2"
+        },
+        {
+          "step": 3,
+          "status": "done",
+          "remark": "wait: queued plan (3 steps): type \"Email\"; type \"Password\"; click \"Sign in\""
+        },
+        {
+          "step": 4,
+          "status": "running",
+          "remark": "Step 3"
+        },
+        {
+          "step": 4,
+          "status": "done",
+          "remark": "type: Type \"{{global.buyer_email}}\" into \"Email\""
+        },
+        {
+          "step": 5,
+          "status": "running",
+          "remark": "Step 4"
+        },
+        {
+          "step": 5,
+          "status": "done",
+          "remark": "type: Type \"{{secrets.user.buyer_password}}\" into \"Password\""
+        },
+        {
+          "step": 6,
+          "status": "running",
+          "remark": "Step 5"
+        },
+        {
+          "step": 6,
+          "status": "done",
+          "remark": ""
+        },
+        {
+          "step": 7,
+          "status": "running",
+          "remark": "Step 6"
+        },
+        {
+          "step": 7,
+          "status": "done",
+          "remark": "click: Clicking Sign in with email and password button"
+        },
+        {
+          "step": 8,
+          "status": "running",
+          "remark": "Step 7"
+        },
+        {
+          "step": 8,
+          "status": "done",
+          "remark": "wait: PRIMARY: wait for the signed-in application to finish session checking"
+        },
+        {
+          "step": 9,
+          "status": "running",
+          "remark": "Step 8"
+        },
+        {
+          "step": 9,
+          "status": "done",
+          "remark": "navigate: PRIMARY: Open {{global.base_url}}/app/admin"
+        },
+        {
+          "step": 10,
+          "status": "running",
+          "remark": "Step 9"
+        },
+        {
+          "step": 10,
+          "status": "done",
+          "remark": "wait: PRIMARY: wait for the admin access-denied page to load"
+        },
+        {
+          "step": 11,
+          "status": "running",
+          "remark": "Step 10"
+        },
+        {
+          "step": 11,
+          "status": "done",
+          "remark": "analyze: ANALYZE(textual_visual, \"The page displays the text 'You do not have access to t"
+        },
+        {
+          "step": 12,
+          "status": "running",
+          "remark": "Step 11"
+        },
+        {
+          "step": 12,
+          "status": "done",
+          "remark": "assert: the page says 'You do not have access to this page'"
+        },
+        {
+          "step": 13,
+          "status": "running",
+          "remark": "Step 12"
+        },
+        {
+          "step": 13,
+          "status": "done",
+          "remark": "navigate: PRIMARY: Open {{global.base_url}}/app/listings/new"
+        },
+        {
+          "step": 14,
+          "status": "running",
+          "remark": "Step 13"
+        },
+        {
+          "step": 14,
+          "status": "done",
+          "remark": "wait: PRIMARY: wait for the listings-new access-denied page to load"
+        },
+        {
+          "step": 15,
+          "status": "running",
+          "remark": "Step 14"
+        },
+        {
+          "step": 15,
+          "status": "done",
+          "remark": "analyze: ANALYZE(textual_visual, \"The page displays the text 'You do not have access to t"
+        },
+        {
+          "step": 16,
+          "status": "running",
+          "remark": "Step 15"
+        },
+        {
+          "step": 16,
+          "status": "done",
+          "remark": "assert: the page says 'You do not have access to this page'"
+        }
+      ],
+      "failure": null,
+      "testUrl": "https://test-manager.lambdatest.com/projects/01M83XMYZ96RHEKPYV21M793TH/test-cases/01M86JWGMC77PAEH62ZV62K6MJ/dashboard/share/US_OL928EEWZRNEL92UAS5V20YMH3FRUO3T7NYEN2FN4AP0DE2YJ99ARSJ1OV01TWWI?type=summary&agentView=true&fqdn=summary-page"
     }
   ]
 }
