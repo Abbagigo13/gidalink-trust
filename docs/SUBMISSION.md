@@ -11,14 +11,23 @@ GidaLink Trust is a Nigerian property marketplace where a listing is only shown 
 
 **Which agent:** Arc Studio coding agent (it wrote the app, migrations and tests). I reviewed the security decisions and ran the Kane scenarios on my own machine.
 
-**What Kane does:** Kane CLI drives a real Chrome browser through 11 plain-English scenarios (public discovery, registration, login and logout, listing creation, validation, the verifier queue, and role permissions for buyer, landlord and admin). `npm run kane` writes the results to `kane/reports/` and a `KANE_FEEDBACK.md` file that the coding agent reads to fix failures. A pre-push hook (`npm run kane:gate`) blocks a push until the smoke scenarios pass, and a "Kane quality" page in the dashboard shows the latest run and a copy-ready fix prompt.
+**What Kane does:** Kane CLI drives a real Chrome browser through 11 plain-English scenarios (public discovery, registration, login and logout, listing creation, validation, the verifier queue, and role permissions for buyer, landlord and admin). `npm run kane` writes the results to `kane/reports/` and a `KANE_FEEDBACK.md` file with the failing step and Kane's explanation. During this build I passed that feedback to the coding agent myself and it fixed the app; the repo now also ships an `AGENTS.md` that tells any local coding agent to run Kane, read `KANE_FEEDBACK.md` and fix the app without being prompted. A pre-push hook (`npm run kane:gate`) blocks a push until the smoke scenarios pass, and a "Kane quality" page in the dashboard shows the latest run and a copy-ready fix prompt.
 
 **What Kane caught (true to the commit history):**
 1. Sign-out sent users to the login page instead of the home page (a race between the route guard and navigation). Found by K03, fixed in `3418f48`, confirmed in `dbdf774`.
 2. Right after sign-in, the app could flash a "could not load your profile" error while the profile was still loading. Found by K07, fixed in `34a7861`, all 11 scenarios passing afterwards.
 3. Two of my own scenarios were badly worded (one contradicted itself, one was too long). Kane's feedback made that obvious, and I rewrote them. These were not app bugs.
 
-**Live URL:** [optional: your deployed link]
+**Live URL:** https://arc-studio-617d28fea0634a51961911ee512376c6-abbagigo.vercel.app
+
+**Judge logins (put these in the private form field, never in the public repo):**
+The rules say judges must be able to run the project and you must hand over working credentials. Create dedicated judge accounts first (section 6), then paste:
+- Landlord: [email] / [password] (create listings, submit for review)
+- Verifier: [email] / [password] (review queue, approve or reject)
+- Admin: [email] / [password] (users, audit log, reports)
+- Buyer: register freely at /auth, or use [email] / [password]
+
+**Fallback if the live site or Kane is unavailable:** the demo video, the committed run history in `kane/reports/` (with Kane evidence links), and the screenshots in the video. Judges do not need their own Kane login to see the results.
 
 **Demo video:** [YouTube link]
 
@@ -84,3 +93,10 @@ I built a property marketplace for Nigeria where listings only get a "verified" 
 - [ ] Record, upload and test the YouTube video link
 - [ ] Publish two or more posts and paste the links into the form
 - [ ] Submit before the deadline
+
+## 6. Judge access (do this before submitting)
+
+1. In Supabase, Authentication > Users, create three accounts with new strong passwords (not your Kane test passwords), for example `judge-landlord@...`, `judge-verifier@...`, `judge-admin@...`. Tick "Auto Confirm User".
+2. Copy `supabase/seed/01_test_roles.sql`, change the three emails to the judge emails, and run it. Check the printed table shows landlord, verifier and admin.
+3. Sign in to the live site with each one once, so you know they work.
+4. After judging ends, delete the accounts. The admin account can change roles and suspend listings on this database, so use a strong password and keep it out of the repo, the video and the posts.
